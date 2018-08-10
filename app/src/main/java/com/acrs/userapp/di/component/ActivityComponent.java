@@ -2,6 +2,7 @@ package com.acrs.userapp.di.component;
 
 import com.acrs.userapp.di.PerActivity;
 import com.acrs.userapp.di.module.ActivityModule;
+import com.acrs.userapp.ui.base.BaseActivity;
 
 import dagger.Component;
 
@@ -12,6 +13,7 @@ import dagger.Component;
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = {ActivityModule.class})
 public interface ActivityComponent {
+    void inject(BaseActivity baseActivity);
 
    /* void inject(BaseActivity activity);
     void inject(MainActvity activity);
