@@ -2,18 +2,19 @@ package com.acrs.userapp.ui.base;
 
 import android.content.Context;
 
+import com.acrs.userapp.data.DataManager;
+
 /**
  * Created by sreelal on 22/1/18.
  */
 
 public class BasePresenter<T extends MvpView> implements MvpPresenter<T> {
     Context context;
-
-   /* public BasePresenter(DataManager dataManager) {
+    DataManager dataManager;
+    public BasePresenter(DataManager dataManager) {
 
         this.dataManager = dataManager;
     }
-*/
     private T mMvpView;
 
     @Override
@@ -28,12 +29,12 @@ public class BasePresenter<T extends MvpView> implements MvpPresenter<T> {
         mMvpView = null;
     }
 
-    /*public DataManager getDataManager() {
+    public DataManager getDataManager() {
 
         return dataManager;
     }
 
     public T getView() {
         return mMvpView;
-    }*/
+    }
 }

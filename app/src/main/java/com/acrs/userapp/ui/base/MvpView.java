@@ -7,8 +7,11 @@ package com.acrs.userapp.ui.base;
 public interface MvpView {
 
     void SnakBarId(int msg);
+
     void SnakBarString(String msg);
 
+    void progresShow(boolean load);
+    void progresCancel(boolean cancel);
 
 
 }

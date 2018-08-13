@@ -1,5 +1,6 @@
 package com.acrs.userapp.ui.base;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.BaseTransientBottomBar;
@@ -21,6 +22,8 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
     protected int colorMain;
 
     protected String userToken;
+    private ProgressDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,10 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
                 .applicationComponent(((App) getApplication()).getComponent())
                 .build();
         activityComponent.inject(this);
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("loading...");
 
     }
-
-
 
 
     public ActivityComponent getActivityComponent() {
@@ -52,18 +55,19 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
     }
-    static Callback  addCallback;
-    public interface Callback{
+
+    static Callback addCallback;
+
+    public interface Callback {
         void back();
     }
 
-    public void SnakBarCallback(String msg, Callback callback)
-    {
-        addCallback=callback;
+    public void SnakBarCallback(String msg, Callback callback) {
+        addCallback = callback;
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 msg, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
-        sbView.setBackgroundColor(getResources().getColor(R.color.snackbar));
+        sbView.setBackgroundColor(getResources().getColor(R.color.snackbarcolor));
         TextView textView = (TextView) sbView
                 .findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
@@ -79,16 +83,41 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
 
 
     }
+
     @Override
-    public void  SnakBarString(String msg) {
+    public void SnakBarString(String msg) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 msg, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
-        sbView.setBackgroundColor(getResources().getColor(R.color.snackbar));
+        sbView.setBackgroundColor(getResources().getColor(R.color.snackbarcolor));
         TextView textView = (TextView) sbView
                 .findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
 
     }
+
+    @Override
+    public void progresShow(boolean load) {
+        if (dialog != null && load)
+
+        {
+            dialog.show();
+        } else if (dialog != null && !load) {
+            dialog.dismiss();
+        }
+    }
+
+    @Override
+    public void progresCancel(boolean cancel) {
+        if (dialog != null && cancel) {
+            dialog.setCancelable(cancel);
+        } else if (dialog != null && !cancel)
+
+        {
+            dialog.setCancelable(cancel);
+        }
+
+    }
+
 }

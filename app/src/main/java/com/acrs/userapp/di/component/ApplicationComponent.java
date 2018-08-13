@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.acrs.userapp.App;
+import com.acrs.userapp.data.DataManager;
 import com.acrs.userapp.di.ApplicationContext;
 import com.acrs.userapp.di.module.ApplicationModule;
 
@@ -24,7 +25,7 @@ public interface ApplicationComponent {
    Context context();
 
 
-   Application application();
-   //DataManager getDataManager();
+    Application application();
+    DataManager getDataManager();
 
 }
