@@ -26,11 +26,16 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         getActivityComponent().inject(this);
         presenter.onAttach(this);
         initialize();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.onDetach();
     }
 
     @Override

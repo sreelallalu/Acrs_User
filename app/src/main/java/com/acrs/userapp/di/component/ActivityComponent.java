@@ -5,6 +5,8 @@ import com.acrs.userapp.di.module.ActivityModule;
 import com.acrs.userapp.ui.base.BaseActivity;
 import com.acrs.userapp.ui.dashboard.DashboardActivty;
 import com.acrs.userapp.ui.login.LoginActivity;
+import com.acrs.userapp.ui.medicine.medicine_add.MedicineAddActivtiy;
+import com.acrs.userapp.ui.medicine.medicine_list.MedicineListActvity;
 import com.acrs.userapp.ui.register.RegisterActivity;
 
 import dagger.Component;
@@ -22,6 +24,8 @@ public interface ActivityComponent {
 
     void inject(DashboardActivty activtiy);
     void inject(RegisterActivity activtiy);
+    void inject(MedicineListActvity activtiy);
+    void inject(MedicineAddActivtiy activtiy);
 
    /* void inject(BaseActivity activity);
     void inject(MainActvity activity);

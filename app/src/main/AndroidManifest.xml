@@ -25,7 +25,8 @@
         <activity android:name=".ui.buddy.buddy_list.BuddyListActvity" />
         <activity android:name=".ui.emergency.EmergencyActvity" />
         <activity android:name=".ui.medicine.medicine_add.MedicineAddActivtiy" />
-        <activity android:name=".ui.medicine.medicine_list.MedicineListActvity"></activity>
+        <activity android:name=".ui.medicine.medicine_list.MedicineListActvity" />
+        <activity android:name=".ui.notification.NotificationActivtiy"></activity>
     </application>
 
 </manifest>
