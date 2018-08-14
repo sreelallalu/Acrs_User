@@ -1,11 +1,11 @@
 package com.acrs.userapp.ui.medicine.medicine_list;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.acrs.userapp.R;
+import com.acrs.userapp.ui.base.BaseActivity;
 
-public class MedicineListActvity extends AppCompatActivity {
+public class MedicineListActvity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

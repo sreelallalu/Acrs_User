@@ -1,5 +1,6 @@
 package com.acrs.userapp.ui.login;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import com.acrs.userapp.R;
 import com.acrs.userapp.databinding.ActivityLoginBinding;
 import com.acrs.userapp.ui.base.BaseActivity;
+import com.acrs.userapp.ui.register.RegisterActivity;
 
 import java.util.HashMap;
 
@@ -42,6 +44,8 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         }
         if (v.getId() == binding.register.getId()) {
 
+            Intent intent = new Intent(this, RegisterActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -82,9 +86,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     public void register() {
 
 
-
     }
-
 
 
     @Override

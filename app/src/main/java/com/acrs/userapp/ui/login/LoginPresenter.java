@@ -25,7 +25,7 @@ public class LoginPresenter<T extends LoginView> extends BasePresenter<T>   impl
     @Override
     public void loginApiCall(HashMap<String,String> hashMap) {
 
-        RestBuilderPro.getService().login(hashMap).enqueue(new Callback<ResponseBody>() {
+        RestBuilderPro.getService(LoginWebApi.class).login(hashMap).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
