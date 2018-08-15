@@ -29,10 +29,32 @@ public class AppDataManager implements DataManager {
     @Override
     public void setUserId(String centerid) {
 
+        mPreferencesHelper.setUserId(centerid);
+
     }
 
     @Override
     public void setUserDetails(String userDetails) {
+     mPreferencesHelper.setUserDetails(userDetails);
+    }
 
+    @Override
+    public String getUserId() {
+        return mPreferencesHelper.getUserId();
+    }
+
+    @Override
+    public String getUserdata() {
+        return mPreferencesHelper.getUserdata();
+    }
+
+    @Override
+    public void setNotificationCancel(int id, boolean cancel) {
+        mPreferencesHelper.setNotificationCancel(id,cancel);
+    }
+
+    @Override
+    public boolean getNotificationCancel(int id) {
+        return mPreferencesHelper.getNotificationCancel(id);
     }
 }

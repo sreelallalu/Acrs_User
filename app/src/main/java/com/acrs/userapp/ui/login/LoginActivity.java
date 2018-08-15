@@ -8,6 +8,7 @@ import android.view.View;
 import com.acrs.userapp.R;
 import com.acrs.userapp.databinding.ActivityLoginBinding;
 import com.acrs.userapp.ui.base.BaseActivity;
+import com.acrs.userapp.ui.dashboard.DashboardActivty;
 import com.acrs.userapp.ui.register.RegisterActivity;
 
 import java.util.HashMap;
@@ -85,6 +86,9 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     public void register() {
 
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+
 
     }
 
@@ -101,7 +105,9 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
             @Override
             public void back() {
 
-                //Intent intent=new Intent(this,Das)
+                Intent intent = new Intent(LoginActivity.this, DashboardActivty.class);
+                startActivity(intent);
+                finish();
 
             }
         });

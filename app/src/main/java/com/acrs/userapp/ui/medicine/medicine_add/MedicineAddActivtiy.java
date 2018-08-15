@@ -11,5 +11,6 @@ public class MedicineAddActivtiy extends BaseActivity implements MedicineAddView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicine_add);
+
     }
 }

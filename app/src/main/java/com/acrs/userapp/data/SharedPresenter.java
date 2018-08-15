@@ -8,6 +8,10 @@ public interface SharedPresenter {
 
     void setUserId(String centerid);
     void setUserDetails(String userDetails);
+    String getUserId();
+    String getUserdata();
+    void setNotificationCancel(int id,boolean cancel);
+    boolean getNotificationCancel(int id);
 
 }
 

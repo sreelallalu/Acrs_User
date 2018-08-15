@@ -19,7 +19,9 @@
             android:id="@+id/logintxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:gravity="center"
+            android:text="Log In"
+            android:textSize="23sp" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -54,7 +56,9 @@
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register" />
+            android:gravity="center"
+            android:text="Register"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </RelativeLayout>
