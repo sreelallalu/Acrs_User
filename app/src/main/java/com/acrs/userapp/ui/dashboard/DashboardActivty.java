@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.acrs.userapp.R;
 import com.acrs.userapp.databinding.ActivityDashboardBinding;
@@ -25,6 +26,9 @@ public class DashboardActivty extends BaseActivity implements DashboardView, Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         //setContentView(R.layout.activity_dashboard);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dashboard);
         getActivityComponent().inject(this);

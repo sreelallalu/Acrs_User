@@ -2,8 +2,10 @@ package com.acrs.userapp.ui.login;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.acrs.userapp.R;
 import com.acrs.userapp.databinding.ActivityLoginBinding;
@@ -25,6 +27,10 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         getActivityComponent().inject(this);
         presenter.onAttach(this);
@@ -40,7 +46,8 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     public void onClick(View v) {
         if (v.getId() == binding.login.getId()) {
-            loginClick();
+          //  loginClick();
+            onSuccessApi();
 
         }
         if (v.getId() == binding.register.getId()) {
@@ -52,6 +59,9 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
 
     @Override
     public void initialize() {
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/splash_t1.ttf");
+        binding.logintxt.setTypeface(typeface);
+        binding.register.setTypeface(typeface);
 
         binding.login.setOnClickListener(this);
         binding.register.setOnClickListener(this);

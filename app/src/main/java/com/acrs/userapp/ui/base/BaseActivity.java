@@ -12,9 +12,12 @@ import android.widget.TextView;
 
 import com.acrs.userapp.App;
 import com.acrs.userapp.R;
+import com.acrs.userapp.data.DataManager;
 import com.acrs.userapp.di.component.ActivityComponent;
 import com.acrs.userapp.di.component.DaggerActivityComponent;
 import com.acrs.userapp.di.module.ActivityModule;
+
+import javax.inject.Inject;
 
 public class BaseActivity extends AppCompatActivity implements MvpView {
     private ActivityComponent activityComponent;
@@ -23,6 +26,9 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
 
     protected String userToken;
     private ProgressDialog dialog;
+
+    @Inject
+   protected DataManager dataManager;
 
 
     @Override

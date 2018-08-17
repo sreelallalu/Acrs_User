@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
 import com.acrs.userapp.di.ActivityContext;
+import com.acrs.userapp.ui.buddy.buddy_list.BuddyListPresenter;
+import com.acrs.userapp.ui.buddy.buddy_list.BuddyListView;
+import com.acrs.userapp.ui.buddy.buddy_list.BuddyList_i_presenter;
 import com.acrs.userapp.ui.dashboard.DashboardPresenter;
 import com.acrs.userapp.ui.dashboard.DashboardView;
 import com.acrs.userapp.ui.dashboard.Dashboard_i_presenter;
@@ -75,6 +78,10 @@ public class ActivityModule {
     MedicineAdd_i_presenter<MedicineAddView> medicineadd_i_presenter(MedicineAddPresenter<MedicineAddView> presenter) {
         return presenter;
     }
-
+    @Provides
+    BuddyList_i_presenter<BuddyListView> buddyAdd_i_presenter(BuddyListPresenter<BuddyListView> presenter)
+    {
+        return presenter;
+    }
 
 }

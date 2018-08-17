@@ -3,6 +3,7 @@ package com.acrs.userapp.di.component;
 import com.acrs.userapp.di.PerActivity;
 import com.acrs.userapp.di.module.ActivityModule;
 import com.acrs.userapp.ui.base.BaseActivity;
+import com.acrs.userapp.ui.buddy.buddy_list.BuddyListActvity;
 import com.acrs.userapp.ui.dashboard.DashboardActivty;
 import com.acrs.userapp.ui.login.LoginActivity;
 import com.acrs.userapp.ui.medicine.medicine_add.MedicineAddActivtiy;
@@ -26,6 +27,7 @@ public interface ActivityComponent {
     void inject(RegisterActivity activtiy);
     void inject(MedicineListActvity activtiy);
     void inject(MedicineAddActivtiy activtiy);
+    void inject(BuddyListActvity activtiy);
 
    /* void inject(BaseActivity activity);
     void inject(MainActvity activity);

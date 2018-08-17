@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Handler;
@@ -13,15 +14,12 @@ import android.support.v4.app.NotificationCompat;
 
 import com.acrs.userapp.PreviewDemo;
 import com.acrs.userapp.R;
-import com.acrs.userapp.data.DataManager;
-
-import javax.inject.Inject;
+import com.acrs.userapp.data.SharedHelper;
 
 public class MedicineAlarmReceiver extends BroadcastReceiver {
 
     private Context context;
-    @Inject
-    DataManager dataManager;
+    private SharedPreferences editor;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -30,7 +28,9 @@ public class MedicineAlarmReceiver extends BroadcastReceiver {
             Uri alarmSound = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE
                     + "://" + context.getPackageName() + "/raw/alarm_tune");
             int notificId = intent.getIntExtra("notification_id", 0);
-            dataManager.setNotificationCancel(notificId,true);
+            editor = context.getSharedPreferences(SharedHelper.MAIN_DATA, Context.MODE_PRIVATE);
+            editor.edit().putBoolean(SharedHelper.USER_NOTIFY,false).commit();
+
             NotificationManager notificationManager =
                     (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -62,7 +62,8 @@ public class MedicineAlarmReceiver extends BroadcastReceiver {
         handler.postDelayed(new Runnable() {
             public void run() {
                 try {
-                    if(dataManager.getNotificationCancel(id)) {
+                    if(editor.getBoolean(SharedHelper.USER_NOTIFY,false))
+                     {
                         notificationManager.cancel(id);
                         Intent i = new Intent(context, PreviewDemo.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

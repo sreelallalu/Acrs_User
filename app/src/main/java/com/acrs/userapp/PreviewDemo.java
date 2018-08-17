@@ -227,7 +227,7 @@ public class PreviewDemo extends AppCompatActivity {
         imageFileName = new File(imageFileFolder, date.toString() + ".jpg");
         try {
             out = new FileOutputStream(imageFileName);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 40, out);
             out.flush();
             out.close();
             scanPhoto(imageFileName.toString());

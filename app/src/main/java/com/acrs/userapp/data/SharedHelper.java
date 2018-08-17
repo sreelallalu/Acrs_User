@@ -15,22 +15,23 @@ import javax.inject.Singleton;
 public class SharedHelper implements SharedPresenter {
     private SharedPreferences mSharedPreferences;
 
-    String MAIN_DATA="main_data";
+  public static String MAIN_DATA="main_data";
     String USER_ID="user_id";
     String USER_DATA="user_data";
-    String USER_NOTIFY="user_notifify";
+   public static String USER_NOTIFY="user_notifify";
 
 
     @Inject
     public SharedHelper(@ApplicationContext Context context) {
 
-        this.mSharedPreferences = context.getSharedPreferences(MAIN_DATA, Context.MODE_PRIVATE);
+        this.mSharedPreferences = context.getSharedPreferences("main_data", Context.MODE_PRIVATE);
     }
+
 
 
     @Override
     public void setUserId(String centerid) {
-        mSharedPreferences.edit().putString(USER_ID,centerid).commit();
+        mSharedPreferences.edit().putString(USER_ID, centerid).commit();
     }
 
     @Override
@@ -51,11 +52,11 @@ public class SharedHelper implements SharedPresenter {
 
     @Override
     public void setNotificationCancel(int id, boolean cancel) {
-        mSharedPreferences.edit().putBoolean(USER_NOTIFY+id,true).commit();
+        mSharedPreferences.edit().putBoolean("user_notifify"+id,true).commit();
     }
 
     @Override
     public boolean getNotificationCancel(int id) {
-        return  mSharedPreferences.getBoolean(USER_NOTIFY+id,false);
+        return  mSharedPreferences.getBoolean("user_notifify"+id,false);
     }
 }
