@@ -14,11 +14,15 @@ public interface RegisterWebApi {
     interface RegisterParms{
 
         String NAME="name";
+        String GENDER="gender";
+        String AGE="age";
+        String POC="poc";
         String MOBILE="mobile";
         String EMAIL="email";
         String PASSWORD="password";
+        String TAGNAME="user_reg";
     }
-    @POST("d")
+    @POST("index.php")
     @FormUrlEncoded
     Call<ResponseBody> register(@FieldMap HashMap<String,String> hashMap);
 }

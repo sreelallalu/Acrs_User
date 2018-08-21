@@ -5,6 +5,9 @@ import com.acrs.userapp.data.DataManager;
 import com.acrs.userapp.di.service.RestBuilderPro;
 import com.acrs.userapp.ui.base.BasePresenter;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
 import javax.inject.Inject;
@@ -58,8 +61,23 @@ public class RegisterPresenter<T extends RegisterView> extends BasePresenter<T> 
 
     }
 
-    private void successResponse(String res) {
+    private void successResponse(String res) throws JSONException {
 
-        getView().onSuccessApi();
+        JSONObject jsonObject = new JSONObject(res);
+        int succ = jsonObject.getInt("success");
+        if (succ == 1) {
+
+            JSONObject userdata = jsonObject.getJSONObject("json");
+            String patientId = userdata.getString("Patient Id");
+            getDataManager().setUserId(patientId);
+            getDataManager().setUserDetails(userdata.toString());
+            getView().onSuccessApi();
+
+
+        } else {
+            getView().onFailerApi();
+        }
+
+
     }
 }

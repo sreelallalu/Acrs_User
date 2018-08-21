@@ -15,11 +15,13 @@ public interface LoginWebApi {
 
         String NAME="name";
         String PASSWRD="password";
+        String TAG="tag";
+        String TAG_USER="userlogin";
     }
 
 
     @FormUrlEncoded
-    @POST("a")
+    @POST("index.php")
     Call<ResponseBody> login(@FieldMap HashMap<String,String> hashMap);
 
 }

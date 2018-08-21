@@ -10,9 +10,13 @@ import retrofit2.http.POST;
 
 public interface MedicineListWebApi {
 
+     interface MedicineParams{
 
+         String PATIENT_ID="patient_id";
+         String TAGNAME="viewmedicine";
+     }
 
-    @POST("")
+    @POST("index.php")
     @FormUrlEncoded
     Call<ResponseBody> medicinelist(@FieldMap HashMap<String,String> hashMap);
 }

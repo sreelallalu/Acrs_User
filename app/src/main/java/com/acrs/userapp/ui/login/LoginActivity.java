@@ -85,6 +85,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
         if (check) {
             progresShow(true);
             HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put(LoginWebApi.LoginParams.TAG, LoginWebApi.LoginParams.TAG_USER);
             hashMap.put(LoginWebApi.LoginParams.NAME, name);
             hashMap.put(LoginWebApi.LoginParams.PASSWRD, password);
             presenter.loginApiCall(hashMap);

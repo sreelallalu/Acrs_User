@@ -58,8 +58,8 @@ public class MedicineListActvity extends BaseActivity implements MedicineListVie
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
         listAdapter = new MedicineAdapter(new ArrayList<MedicineListModel>(), this);
         binding.recycler.setAdapter(listAdapter);
-      //  refreshData();
-        alarmSetting();
+        refreshData();
+       // alarmSetting();
 
     }
 
@@ -75,7 +75,8 @@ public class MedicineListActvity extends BaseActivity implements MedicineListVie
 
 
         HashMap<String,String> hashMap=new HashMap<>();
-
+        hashMap.put("tag",MedicineListWebApi.MedicineParams.TAGNAME);
+        hashMap.put(MedicineListWebApi.MedicineParams.PATIENT_ID,dataManager.getUserId());
         presenter.medicineListApi(hashMap);
     }
 

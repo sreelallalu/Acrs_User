@@ -42,6 +42,9 @@ public class MedicineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         if (list_array.size() > 0 && holder instanceof ViewHolderH) {
             try {
+                ((ViewHolderH) holder).medicinename.setText(list_array.get(position).getMedicine());
+                ((ViewHolderH) holder).medicinenote.setText(list_array.get(position).getNote());
+                ((ViewHolderH) holder).medicinetime.setText(list_array.get(position).getTime());
               /*  ((ViewHolderH) holder).scheduleDate.setText(list_array.get(position).getTrainingDate());
                 ((ViewHolderH) holder).schedulePlace.setText(list_array.get(position).getAddress());
                 ((ViewHolderH) holder).sheduleStartTime.setText(list_array.get(position).getFromTime());
@@ -62,10 +65,14 @@ public class MedicineAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     private class ViewHolderH extends RecyclerView.ViewHolder {
-        private TextView scheduleDate,schedulePlace,sheduleStartTime,sheduleEndTime;
+        private TextView medicinename,medicinenote,medicinetime;
+
 
         public ViewHolderH(View v) {
             super(v);
+            medicinename=(TextView)v.findViewById(R.id.medicine_name);
+            medicinenote=(TextView)v.findViewById(R.id.medicine_note);
+            medicinetime=(TextView)v.findViewById(R.id.medicine_time);
            /* scheduleDate = (TextView) v.findViewById(R.id.scheduleDate);
             schedulePlace = (TextView) v.findViewById(R.id.schedulePlace);
             sheduleStartTime = (TextView) v.findViewById(R.id.sheduleStartTime);
