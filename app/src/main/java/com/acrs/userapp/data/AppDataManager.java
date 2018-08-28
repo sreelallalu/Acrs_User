@@ -57,4 +57,14 @@ public class AppDataManager implements DataManager {
     public boolean getNotificationCancel(int id) {
         return mPreferencesHelper.getNotificationCancel(id);
     }
+
+    @Override
+    public void setFirebaseID(String firebaseID) {
+        mPreferencesHelper.setFirebaseID(firebaseID);
+    }
+
+    @Override
+    public String getFirebaseID() {
+        return mPreferencesHelper.getFirebaseID();
+    }
 }

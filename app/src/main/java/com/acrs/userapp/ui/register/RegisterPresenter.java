@@ -69,7 +69,7 @@ public class RegisterPresenter<T extends RegisterView> extends BasePresenter<T> 
         int succ = jsonObject.getInt("success");
         if (succ == 1) {
 
-            JSONObject userdata = jsonObject.getJSONObject("json");
+            JSONObject userdata = jsonObject.getJSONObject("data");
             String patientId = userdata.getString("Patient Id");
             getDataManager().setUserId(patientId);
             getDataManager().setUserDetails(userdata.toString());

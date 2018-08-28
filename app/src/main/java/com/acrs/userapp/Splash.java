@@ -28,18 +28,18 @@ public class Splash extends BaseActivity {
         setContentView(R.layout.activity_splash);
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(FLAG_LAYOUT_NO_LIMITS);
-        TextView splash_txt=findViewById(R.id.splash_txt);
+        TextView splash_txt = findViewById(R.id.splash_txt);
 
-        Intent intent=null;
+        Intent intent = null;
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/splash_t1.ttf");
         splash_txt.setTypeface(typeface);
 
 
         if (dataManager.getUserId() != null) {
-             intent = new Intent(this, DashboardActivty.class);
+            intent = new Intent(this, DashboardActivty.class);
 
-        }else{
-             intent = new Intent(this, LoginActivity.class);
+        } else {
+            intent = new Intent(this, LoginActivity.class);
 
         }
         final Intent finalIntent = intent;
@@ -50,7 +50,7 @@ public class Splash extends BaseActivity {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 finish();
             }
-        },3000);
+        }, 3000);
 
     }
 

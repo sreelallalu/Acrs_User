@@ -7,4 +7,6 @@ import java.util.HashMap;
 public interface Login_i_presenter<T extends LoginView> extends MvpPresenter<T> {
     void loginApiCall(HashMap<String,String> hashMap);
 
+
+
 }

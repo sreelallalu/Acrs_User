@@ -59,4 +59,15 @@ public class SharedHelper implements SharedPresenter {
     public boolean getNotificationCancel(int id) {
         return  mSharedPreferences.getBoolean("user_notifify"+id,false);
     }
+
+    @Override
+    public void setFirebaseID(String firebaseID) {
+        mSharedPreferences.edit().putString("firebase_id",firebaseID).commit();
+
+    }
+
+    @Override
+    public String getFirebaseID() {
+        return mSharedPreferences.getString("firebase_id",null);
+    }
 }
