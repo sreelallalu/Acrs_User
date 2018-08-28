@@ -20,7 +20,6 @@ import javax.inject.Inject;
 public class LoginActivity extends BaseActivity implements LoginView, View.OnClickListener {
 
     @Inject
-
     Login_i_presenter<LoginView> presenter;
     ActivityLoginBinding binding;
 
@@ -46,8 +45,8 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     public void onClick(View v) {
         if (v.getId() == binding.login.getId()) {
-          //  loginClick();
-            onSuccessApi();
+            loginClick();
+            //onSuccessApi();
 
         }
         if (v.getId() == binding.register.getId()) {
@@ -107,6 +106,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
     @Override
     public void onFailerApi() {
         progresShow(false);
+        super.SnakBarString("Login failed");
     }
 
     @Override

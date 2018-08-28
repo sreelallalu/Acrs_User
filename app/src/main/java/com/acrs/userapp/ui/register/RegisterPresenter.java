@@ -1,5 +1,7 @@
 package com.acrs.userapp.ui.register;
 
+import android.util.Log;
+
 import com.acrs.userapp.R;
 import com.acrs.userapp.data.DataManager;
 import com.acrs.userapp.di.service.RestBuilderPro;
@@ -62,7 +64,7 @@ public class RegisterPresenter<T extends RegisterView> extends BasePresenter<T> 
     }
 
     private void successResponse(String res) throws JSONException {
-
+        Log.e("response_regi", res);
         JSONObject jsonObject = new JSONObject(res);
         int succ = jsonObject.getInt("success");
         if (succ == 1) {

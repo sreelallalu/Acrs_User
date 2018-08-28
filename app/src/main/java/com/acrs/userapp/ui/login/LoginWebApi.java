@@ -13,7 +13,7 @@ public interface LoginWebApi {
 
     interface LoginParams{
 
-        String NAME="name";
+        String NAME="username";
         String PASSWRD="password";
         String TAG="tag";
         String TAG_USER="userlogin";

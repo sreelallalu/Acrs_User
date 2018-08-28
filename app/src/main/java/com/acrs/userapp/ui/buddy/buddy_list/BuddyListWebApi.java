@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 public interface BuddyListWebApi {
 
 
-    @POST("")
+    @POST("index.php")
     @FormUrlEncoded
     Call<ResponseBody> buddylist(@FieldMap HashMap<String, String> hashMap);
 }

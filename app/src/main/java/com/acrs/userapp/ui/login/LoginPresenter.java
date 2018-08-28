@@ -1,5 +1,7 @@
 package com.acrs.userapp.ui.login;
 
+import android.util.Log;
+
 import com.acrs.userapp.R;
 import com.acrs.userapp.data.DataManager;
 import com.acrs.userapp.di.service.RestBuilderPro;
@@ -62,12 +64,15 @@ public class LoginPresenter<T extends LoginView> extends BasePresenter<T> implem
 
     private void successResponse(String res) {
 
+
         try {
+            Log.e("response_login",res);
+
             JSONObject jsonObject = new JSONObject(res);
             int succ = jsonObject.getInt("success");
             if (succ == 1) {
 
-                JSONObject userdata = jsonObject.getJSONObject("Userdata");
+                JSONObject userdata = jsonObject.getJSONObject("data");
                 String patientId = userdata.getString("Patient Id");
                 getDataManager().setUserId(patientId);
                 getDataManager().setUserDetails(userdata.toString());

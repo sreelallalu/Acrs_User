@@ -80,7 +80,7 @@ public class MedicineListPresenter<T extends MedicineListView> extends BasePrese
                 String time = jsonObject1.getString("time");
                 String note = jsonObject1.getString("note");
                 String u_id = jsonObject1.getString("u_id");
-                String fullname = jsonObject1.getString("");
+                String fullname = jsonObject1.getString("fullname");
                 String age = jsonObject1.getString("age");
                 String gender = jsonObject1.getString("gender");
                 String contact_no = jsonObject1.getString("contact_no");
@@ -104,7 +104,7 @@ public class MedicineListPresenter<T extends MedicineListView> extends BasePrese
                 model.setU_id(Unique_id);
                 listModels.add(model);
             }
-            getView().onSuccessApi(new ArrayList<MedicineListModel>());
+            getView().onSuccessApi(listModels);
 
 
         }else{
