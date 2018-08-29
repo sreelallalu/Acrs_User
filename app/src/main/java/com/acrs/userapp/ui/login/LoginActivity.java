@@ -69,11 +69,11 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
 
     @Override
     public void loginClick() {
-        String name = binding.name.getText().toString();
+        String username = binding.nam.getText().toString();
         String password = binding.password.getText().toString();
         boolean check = true;
-        if (name != null && name.length() < 3) {
-            binding.name.setError("Invalid name");
+        if (username != null && username.length() < 3) {
+            binding.nam.setError("Invalid name");
             check = false;
         }
         if (password != null && password.length() < 3) {
@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
             progresShow(true);
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put(LoginWebApi.LoginParams.TAG, LoginWebApi.LoginParams.TAG_USER);
-            hashMap.put(LoginWebApi.LoginParams.NAME, name);
+            hashMap.put(LoginWebApi.LoginParams.NAME, username);
             hashMap.put(LoginWebApi.LoginParams.PASSWRD, password);
             hashMap.put(LoginWebApi.LoginParams.FIREBASE, dataManager.getFirebaseID());
             presenter.loginApiCall(hashMap);

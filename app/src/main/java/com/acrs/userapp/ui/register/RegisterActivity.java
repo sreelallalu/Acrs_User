@@ -57,7 +57,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
 
         boolean check = true;
 
-        if (name != null && name.length() < 33) {
+        if (name != null && name.length() < 10) {
             check = false;
               binding.name.setError("Invalid name");
         }
