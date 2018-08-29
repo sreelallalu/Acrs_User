@@ -5,7 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@mipmap/back1"
     android:layout_height="match_parent"
+
     tools:context=".ui.register.RegisterActivity">
 
     <LinearLayout
@@ -23,6 +25,9 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/name"
+                android:textColor="#000"
+
+                android:textColorHint="#000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="name" />
@@ -47,6 +52,7 @@
                 android:layout_gravity="center"
 
                 android:layout_weight="1"
+                android:textColor="#000"
                 android:checked="true"
                 android:hint="GENDER"
                 android:text="Male"
@@ -57,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="#000"
 
                 android:layout_weight="1"
                 android:text="Female"
@@ -67,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:textColor="#000"
 
                 android:layout_weight="1"
                 android:text="Other"
@@ -83,6 +91,8 @@
                 android:id="@+id/mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:textColor="#000"
                 android:hint="mobile" />
         </android.support.design.widget.TextInputLayout>
 
@@ -94,6 +104,8 @@
                 android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColorHint="#000"
+                android:textColor="#000"
                 android:hint="age" />
         </android.support.design.widget.TextInputLayout>
 
@@ -103,6 +115,8 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/email"
+                android:textColor="#000"
+                android:textColorHint="#000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="email" />
@@ -116,6 +130,8 @@
                 android:id="@+id/poc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:textColorHint="#000"
                 android:hint="point of contact" />
         </android.support.design.widget.TextInputLayout>
 
@@ -125,6 +141,8 @@
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/password"
+                android:textColorHint="#000"
+                android:textColor="#000"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="password" />

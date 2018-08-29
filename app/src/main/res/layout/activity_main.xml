@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/back2"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <TextView
         android:text="takepic"
+        android:textSize="10pt"
+        android:textStyle="italic"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
         android:onClick="takePic"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        tools:ignore="OnClick" />
 
     <FrameLayout
         android:layout_width="match_parent"
