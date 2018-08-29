@@ -30,7 +30,7 @@ public class RegisterPresenter<T extends RegisterView> extends BasePresenter<T> 
     @Override
     public void register(HashMap<String, String> hashMap) {
 
-
+               Log.e("registerparams",hashMap.toString());
         RestBuilderPro.getService(RegisterWebApi.class).register(hashMap).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
