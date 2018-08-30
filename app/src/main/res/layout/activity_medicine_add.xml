@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@mipmap/back2"
+    android:background="@drawable/today10"
     android:layout_height="match_parent"
     tools:context=".ui.medicine.medicine_add.MedicineAddActivtiy">
 
@@ -53,6 +53,7 @@
 
         <Button
             android:id="@+id/submit"
+            android:background="#e1f5efef"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit" />
