@@ -40,8 +40,8 @@ public class BuddyListAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         if (list_array.size() > 0 && holder instanceof BuddyListAdapter.ViewHolderH) {
             try {
-               // ((ViewHolderH) holder).name.setText(list_array.get(position).getName());
-                //((ViewHolderH) holder).phone.setText(list_array.get(position).getPhone());
+                ((ViewHolderH) holder).name.setText(list_array.get(position).getBuddy_name());
+                ((ViewHolderH) holder).phone.setText(list_array.get(position).getPhone_no());
             /*    ((ViewHolderH) holder).sheduleStartTime.setText(list_array.get(position).getFromTime());
                 ((ViewHolderH) holder).sheduleEndTime.setText(list_array.get(position).getToTime());
                 ((BuddyListAdapter.ViewHolderH) holder).bind(list_array.get(position));*/
