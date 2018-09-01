@@ -90,6 +90,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView, View
             hashMap.put(RegisterWebApi.RegisterParms.POC,poc);
             hashMap.put(RegisterWebApi.RegisterParms.EMAIL,email);
             hashMap.put(RegisterWebApi.RegisterParms.PASSWORD,password);
+            hashMap.put(RegisterWebApi.RegisterParms.FIREBASE,dataManager.getFirebaseID()==null?"":dataManager.getFirebaseID());
 
             presenter.register(hashMap);
 

@@ -17,10 +17,11 @@ public interface RegisterWebApi {
         String GENDER="gender";
         String AGE="age";
         String POC="poc";
-        String MOBILE="mobile";
+        String MOBILE="phonenumber";
         String EMAIL="email";
         String PASSWORD="password";
         String TAGNAME="user_reg";
+        String FIREBASE="firebasetocken";
     }
     @POST("index.php")
     @FormUrlEncoded

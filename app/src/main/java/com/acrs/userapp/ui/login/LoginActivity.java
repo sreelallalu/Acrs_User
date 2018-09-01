@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity implements LoginView, View.OnCli
             hashMap.put(LoginWebApi.LoginParams.TAG, LoginWebApi.LoginParams.TAG_USER);
             hashMap.put(LoginWebApi.LoginParams.NAME, name);
             hashMap.put(LoginWebApi.LoginParams.PASSWRD, password);
-            hashMap.put(LoginWebApi.LoginParams.FIREBASE, dataManager.getFirebaseID());
+            hashMap.put(LoginWebApi.LoginParams.FIREBASE, dataManager.getFirebaseID()==null?"":dataManager.getFirebaseID());
             presenter.loginApiCall(hashMap);
 
         }

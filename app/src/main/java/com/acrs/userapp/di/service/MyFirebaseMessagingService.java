@@ -1,10 +1,26 @@
 package com.acrs.userapp.di.service;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
+
+import com.acrs.userapp.R;
 import com.acrs.userapp.data.AppDataManager;
+import com.acrs.userapp.data.DataManager;
+import com.acrs.userapp.ui.dashboard.DashboardActivty;
+import com.acrs.userapp.ui.medicine.medicine_list.MedicineListActvity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
+
+import javax.inject.Inject;
 
 /**
  * Created by soorya on 31-05-18.
@@ -15,43 +31,24 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "firebase";
     private AppDataManager appDataManager;
 
-
+    @Inject
+    DataManager dataManager;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
 
-
         if (remoteMessage.getData() != null && remoteMessage.getData().size() > 0) {
 
             try {
-                //JSONObject jsonObject = new JSONObject(remoteMessage.getData().toString());
 
                 String title = remoteMessage.getData().get("title");
                 String message = remoteMessage.getData().get("text");
-               // String data = remoteMessage.getData().toString();
 
+                {
+                    sendNotificationNotification(title, message, remoteMessage.getData());
+                }
 
-              /*  if (jsonObject.has("title")) {
-
-                    String title = jsonObject.getString("title");
-                    String message="";
-                    if(jsonObject.has("text"))
-                    {
-                        message = jsonObject.getString("text");
-
-                    }
-                    String data = jsonObject.toString();*/
-
-                    // TODO: 18/7/18 check user logined
-                   /* int trianerId = appDataManager.getmPreferencesHelper().getTrainerId();
-
-
-                    if (trianerId != 0 || citizenId != 0) {
-                        sendNotificationNotification(title, message,remoteMessage.getData(), new int[]{trianerId, citizenId});
-                    }
-*/
-               // }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -61,13 +58,39 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     }
 
-    private void sendNotificationNotification(String remoteMessage, String message, Map<String,String> data, int[] typeuser) throws Exception {
-
-        //JSONObject jsonObject = new JSONObject()
-        int type = 0;
-        if (data.containsKey("type")){
-            type = Integer.parseInt(data.get("type"));
+    private void sendNotificationNotification(String remoteMessage, String message, Map<String, String> data) throws Exception {
+        String type = "";
+        if (data.containsKey("type")) {
+            type = data.get("type");
         }
+        if (type.equals("medicine_add")) {
+
+            String medicinetime = data.get("med_time");
+            String title = data.get("title");
+            String med_name = data.get("med_name");
+            String who = data.get("who");
+            String med_note = data.get("med_note");
+            alarmSetting(medicinetime);
+
+            Intent intent = new Intent(this, MedicineListActvity.class);
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addParentStack(DashboardActivty.class);
+
+            stackBuilder.addNextIntentWithParentStack(intent);
+            //intent.putExtra(FIREBASE_DATA, remoteMessage);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            PendingIntent pendingIntent =
+                    stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+
+            //intent.putExtra(FIREBASE_DATA, remoteMessage);
+
+            notifyMsg(title,med_name+" added by "+who,pendingIntent);
+
+
+        }
+
 
 //        int type = !data.isNull("type") ? data.get("type") : 0;
 
@@ -123,6 +146,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         }*/
 
+
+    }
+
+    private void alarmSetting(String medicinetime) {
+
+
+    }
+
+    private void notifyMsg(String title, String message, PendingIntent pendingIntent) throws Exception {
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(android.R.drawable.btn_star)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),
+                        R.mipmap.ic_launcher))
+                .setContentTitle(title)
+                .setContentText(message)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setContentIntent(pendingIntent);
+
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0 ,notificationBuilder.build());
 
     }
 

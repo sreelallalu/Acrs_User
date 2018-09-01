@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -19,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Splash"
+        <activity
+            android:name=".Splash"
             android:theme="@style/NoActionTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,11 +36,19 @@
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.dashboard.DashboardActivty" />
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.buddy.buddy_add.BuddyAddActvity" />
+        <activity android:name=".ui.buddy.buddy_add.BuddyRequestViewActvity" />
         <activity android:name=".ui.buddy.buddy_list.BuddyListActvity" />
         <activity android:name=".ui.emergency.EmergencyActvity" />
-        <activity android:name=".ui.medicine.medicine_add.MedicineAddActivtiy" />
-        <activity android:name=".ui.medicine.medicine_list.MedicineListActvity" />
+        <activity
+
+            android:name=".ui.medicine.medicine_add.MedicineAddActivtiy"
+            android:screenOrientation="portrait"
+
+            ></activity>
+        <activity
+            android:name=".ui.medicine.medicine_list.MedicineListActvity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.notification.NotificationActivtiy" />
 
         <receiver android:name=".ui.medicine.medicine_list.MedicineAlarmReceiver">
@@ -48,6 +61,18 @@
         <activity android:name=".PreviewDemo">
 
         </activity>
+
+        <service android:name=".di.service.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".di.service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

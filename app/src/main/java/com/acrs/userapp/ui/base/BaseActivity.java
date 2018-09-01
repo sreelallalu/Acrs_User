@@ -29,7 +29,7 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
     private ProgressDialog dialog;
 
     @Inject
-   protected DataManager dataManager;
+    protected DataManager dataManager;
 
 
     @Override
@@ -42,12 +42,12 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
         activityComponent.inject(this);
         dialog = new ProgressDialog(this);
         dialog.setMessage("loading...");
-        if (dataManager.getFirebaseID() != null) {
-            String firebaseID = FirebaseInstanceId.getInstance().getId();
+        if (dataManager.getFirebaseID() == null) {
+            String firebaseID = FirebaseInstanceId.getInstance().getToken();
 
             if (firebaseID != null) {
 
-                dataManager.setUserDetails(firebaseID);
+                dataManager.setFirebaseID(firebaseID);
 
             }
 
@@ -63,14 +63,19 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
 
     @Override
     public void SnakBarId(int msg) {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
-                msg, Snackbar.LENGTH_SHORT);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundColor(getResources().getColor(R.color.snackbarcolor));
-        TextView textView = (TextView) sbView
-                .findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(ContextCompat.getColor(this, R.color.white));
-        snackbar.show();
+
+        try {
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    msg, Snackbar.LENGTH_SHORT);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundColor(getResources().getColor(R.color.snackbarcolor));
+            TextView textView = (TextView) sbView
+                    .findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(ContextCompat.getColor(this, R.color.white));
+            snackbar.show();
+        } catch (Exception e) {
+        }
+
     }
 
     static Callback addCallback;
@@ -103,15 +108,17 @@ public class BaseActivity extends AppCompatActivity implements MvpView {
 
     @Override
     public void SnakBarString(String msg) {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
-                msg, Snackbar.LENGTH_SHORT);
-        View sbView = snackbar.getView();
-        sbView.setBackgroundColor(getResources().getColor(R.color.snackbarcolor));
-        TextView textView = (TextView) sbView
-                .findViewById(android.support.design.R.id.snackbar_text);
-        textView.setTextColor(ContextCompat.getColor(this, R.color.white));
-        snackbar.show();
-
+        try {
+            Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                    msg, Snackbar.LENGTH_SHORT);
+            View sbView = snackbar.getView();
+            sbView.setBackgroundColor(getResources().getColor(R.color.snackbarcolor));
+            TextView textView = (TextView) sbView
+                    .findViewById(android.support.design.R.id.snackbar_text);
+            textView.setTextColor(ContextCompat.getColor(this, R.color.white));
+            snackbar.show();
+        } catch (Exception e) {
+        }
     }
 
     @Override

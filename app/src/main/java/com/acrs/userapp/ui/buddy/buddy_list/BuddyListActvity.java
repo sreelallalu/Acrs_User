@@ -11,13 +11,16 @@ import com.acrs.userapp.R;
 import com.acrs.userapp.databinding.ActivityBuddyListBinding;
 import com.acrs.userapp.ui.base.BaseActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class BuddyListActvity extends BaseActivity implements BuddyListView,SwipeRefreshLayout.OnRefreshListener, BuddyListAdapter.OnAdapterListener{
+public class BuddyListActvity extends BaseActivity implements BuddyListView, SwipeRefreshLayout.OnRefreshListener, BuddyListAdapter.OnAdapterListener {
 
 
     ActivityBuddyListBinding binding;
@@ -25,11 +28,12 @@ public class BuddyListActvity extends BaseActivity implements BuddyListView,Swip
     @Inject
     BuddyList_i_presenter<BuddyListView> presenter;
     private BuddyListAdapter listAdapter;
+    private String uId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      //  setContentView(R.layout.activity_buddy_list);
+        //  setContentView(R.layout.activity_buddy_list);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_buddy_list);
         getActivityComponent().inject(this);
@@ -42,9 +46,18 @@ public class BuddyListActvity extends BaseActivity implements BuddyListView,Swip
     public void initialize() {
         binding.swipeRefresh.setOnRefreshListener(this);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
-        listAdapter = new BuddyListAdapter(new ArrayList<BuddyListModel>(), this);
+        listAdapter = new BuddyListAdapter(new ArrayList<BuddyListModel>(), this, false);
         binding.recycler.setAdapter(listAdapter);
         refreshData();
+        String userdata = dataManager.getUserdata();
+
+        try {
+            JSONObject userOBJ = new JSONObject(userdata);
+            uId = userOBJ.getString("id");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -57,7 +70,9 @@ public class BuddyListActvity extends BaseActivity implements BuddyListView,Swip
         refreshclick = false;
 
 
-        HashMap<String,String> hashMap=new HashMap<>();
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("tag", "ViewBuddies");
+        hashMap.put("patient_id", dataManager.getUserId());
 
         presenter.buddyList(hashMap);
     }
@@ -79,6 +94,23 @@ public class BuddyListActvity extends BaseActivity implements BuddyListView,Swip
     }
 
     @Override
+    public void removeFailed() {
+        super.progresShow(false);
+    }
+
+    @Override
+    public void removeSuccess() {
+        super.progresShow(false);
+        SnakBarCallback("successfully removed", new Callback() {
+            @Override
+            public void back() {
+                finish();
+            }
+        });
+
+    }
+
+    @Override
     public void onRefresh() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -94,5 +126,15 @@ public class BuddyListActvity extends BaseActivity implements BuddyListView,Swip
     @Override
     public void adapterItemClick(BuddyListModel item) {
 
+
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("buddyid", item.getBuddy_id());
+        hashMap.put("userid", uId != null ? uId : "");
+        hashMap.put("status", "0");
+        hashMap.put("tag", "Approve");
+
+
+        super.progresShow(true);
+        presenter.buddyRemove(hashMap);
     }
 }

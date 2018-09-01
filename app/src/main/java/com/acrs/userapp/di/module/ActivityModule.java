@@ -4,12 +4,18 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
 import com.acrs.userapp.di.ActivityContext;
+import com.acrs.userapp.ui.buddy.buddy_add.BuddyRequestViewPresenter;
+import com.acrs.userapp.ui.buddy.buddy_add.BuddyRequestViewView;
+import com.acrs.userapp.ui.buddy.buddy_add.BuddyRequestView_i_presenter;
 import com.acrs.userapp.ui.buddy.buddy_list.BuddyListPresenter;
 import com.acrs.userapp.ui.buddy.buddy_list.BuddyListView;
 import com.acrs.userapp.ui.buddy.buddy_list.BuddyList_i_presenter;
 import com.acrs.userapp.ui.dashboard.DashboardPresenter;
 import com.acrs.userapp.ui.dashboard.DashboardView;
 import com.acrs.userapp.ui.dashboard.Dashboard_i_presenter;
+import com.acrs.userapp.ui.emergency.EmergencyPresenter;
+import com.acrs.userapp.ui.emergency.EmergencyView;
+import com.acrs.userapp.ui.emergency.Emergency_i_presenter;
 import com.acrs.userapp.ui.login.LoginPresenter;
 import com.acrs.userapp.ui.login.LoginView;
 import com.acrs.userapp.ui.login.Login_i_presenter;
@@ -78,9 +84,19 @@ public class ActivityModule {
     MedicineAdd_i_presenter<MedicineAddView> medicineadd_i_presenter(MedicineAddPresenter<MedicineAddView> presenter) {
         return presenter;
     }
+
     @Provides
-    BuddyList_i_presenter<BuddyListView> buddyAdd_i_presenter(BuddyListPresenter<BuddyListView> presenter)
-    {
+    BuddyList_i_presenter<BuddyListView> buddyAdd_i_presenter(BuddyListPresenter<BuddyListView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    BuddyRequestView_i_presenter<BuddyRequestViewView> buddyrequest_i_presenter(BuddyRequestViewPresenter<BuddyRequestViewView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    Emergency_i_presenter<EmergencyView> emergency_i_presenter(EmergencyPresenter<EmergencyView> presenter) {
         return presenter;
     }
 

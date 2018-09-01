@@ -12,6 +12,7 @@
         android:layout_height="wrap_content" >
 
         <LinearLayout
+            android:layout_margin="10dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_width="match_parent"
@@ -27,6 +28,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textStyle="bold"
                     android:id="@+id/buddy_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -35,6 +37,7 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:layout_marginTop="5dp"
                     android:id="@+id/buddy_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,6 +46,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/hideview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".7"
@@ -50,7 +54,11 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button"
+
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/accept"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="accept"

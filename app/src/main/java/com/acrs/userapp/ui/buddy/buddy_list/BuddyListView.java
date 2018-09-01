@@ -10,6 +10,8 @@ public interface BuddyListView extends MvpView{
     void refreshData();
     void onFailerApi();
     void onSuccessApi(List<BuddyListModel> list);
+    void removeFailed();
+    void removeSuccess();
     String tempData="{\n" +
             "\t\"list\": [{\n" +
             "\t\t\t\"name\": \"kiran\",\n" +

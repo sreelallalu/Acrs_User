@@ -1,5 +1,7 @@
 package com.acrs.userapp.ui.medicine.medicine_list;
 
+import android.util.Log;
+
 import com.acrs.userapp.R;
 import com.acrs.userapp.data.DataManager;
 import com.acrs.userapp.di.service.RestBuilderPro;
@@ -61,7 +63,7 @@ public class MedicineListPresenter<T extends MedicineListView> extends BasePrese
     }
 
     private void successResponse(String res) throws JSONException {
-
+        Log.e("response_",res);
 
         JSONObject jsonObject = new JSONObject(res);
 
@@ -108,7 +110,7 @@ public class MedicineListPresenter<T extends MedicineListView> extends BasePrese
 
 
         }else{
-
+            getView().SnakBarString("No Medicine Added Currently");
            getView().onFailerApi();
         }
 
